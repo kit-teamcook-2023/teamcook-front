@@ -47,7 +47,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <button type="button" onClick={toggleDarkMode} isDarkMode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
+            <button type="button" onClick={toggleDarkMode} isdarkmode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
           </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
@@ -154,7 +154,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                 <ul className="nav" id="side-menu">
                   <li className="sidebar-search">
                     <div className="input-group custom-search-form">
-                      <input type="text" className="form-control" placeholder="Search..." />
+                      <input type="text" className="form-control" placeholder="검색어를 입력하세요" />
                       <span className="input-group-btn">
                     <button className="btn btn-default" type="button">
                     <FontAwesomeIcon icon={faSearch} />
