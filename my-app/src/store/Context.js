@@ -19,6 +19,7 @@ const ContextProvider = ({children}) => {
 
 			eventSource.onmessage = async (event) => {
 				const res = await event.data;
+				console.log(res)
 				let temp, parsed;
 				parsed = res.split(':');
 				const type = parsed[0]

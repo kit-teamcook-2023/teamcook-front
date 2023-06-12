@@ -95,10 +95,10 @@ export const Chatroom = () => {
 		getMessageList();
 		connectSocket();
 
-		return async () => {
+		return () => {
 			ws.current.close();
 		}
-	},[])
+	},[state])
 
 	const handleWrite = (e) => {
 		setMessage(e.target.value)

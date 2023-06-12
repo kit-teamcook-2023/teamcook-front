@@ -50,6 +50,30 @@ const GlobalStyle = createGlobalStyle`
   tr, .nav>li>button {
     background-color: ${(props) => props.theme.tableColor};
   }
+
+  .your-chat-message {
+    background-color: ${(props) => props.theme.yChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
+  }
+
+  .my-chat-message {
+    background-color: ${(props) => props.theme.mChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
+  }
+
+  .ql-toolbar .ql-stroke {
+    fill: none;
+    stroke: ${(props) => props.theme.textColor};
+  }
+
+  .ql-toolbar .ql-fill {
+    fill: ${(props) => props.theme.textColor};
+    stroke: none;
+  }
+
+  .ql-toolbar .ql-picker {
+    color: ${(props) => props.theme.textColor};
+  }
 `;
 
 function App() {
