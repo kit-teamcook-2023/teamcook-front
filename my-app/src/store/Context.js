@@ -57,6 +57,8 @@ const ContextProvider = ({children}) => {
 	const logout = () => {
 		setIsLogin(false);
 		localStorage.removeItem("token");
+		localStorage.removeItem("comment");
+		localStorage.removeItem("chat");
 	}
 
 	const parseDateFormat = (date) => {
