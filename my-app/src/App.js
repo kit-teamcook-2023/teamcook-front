@@ -29,6 +29,7 @@ import MorrisChart from "./pages/MorrisChart";
 import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
+import {Edit} from "./pages/Edit";
 
 const GlobalStyle = createGlobalStyle`
   body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
@@ -125,6 +126,7 @@ function App() {
                 {/* private route */}
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
+                <Route path='/edit/:id' element={<PrivateRoute component={<Edit />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
