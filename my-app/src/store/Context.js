@@ -19,6 +19,7 @@ const ContextProvider = ({children}) => {
 
 			eventSource.onmessage = async (event) => {
 		        const res = JSON.parse(event.data);
+				console.log(res)
 				// SSE 데이터를 
 				/*
 				{
