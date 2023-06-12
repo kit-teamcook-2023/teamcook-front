@@ -20,6 +20,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
 import jwt_decode from "jwt-decode";
 import {BsFillSunFill, BsFillMoonFill} from 'react-icons/bs';
+import testImage from './image/github.png'
 
 export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
@@ -251,6 +252,11 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     {/* <!-- /.nav-second-level --> */}
                   </li>
                 </ul>
+                <div title='해당 광고로 이동합니다.'>
+                  <Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
+                    <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '50px', width: '150px'}} alt='광고자리'/>
+                  </Link>
+                </div>
               </div>
               {/* <!-- /.sidebar-collapse --> */}
             </div>
