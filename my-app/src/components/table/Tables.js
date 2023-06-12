@@ -49,7 +49,9 @@ export const Tables = ({title, category}) => {
     return (
       <div id="page-wrapper">
         <div className="row">
-            <h1 className="page-header">{title}</h1>
+            <div className="col-lg-12">
+                <h1 className="page-header">{title}</h1>
+            </div>
         </div>
             <div className="panel panel-default">
                 <Search
@@ -83,7 +85,7 @@ export const Tables = ({title, category}) => {
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
                                 <td>{calculateDate(item.date)}</td>
-                                <td>{item.likes}</td>
+                                <td style={{color: '#37ACC9'}}>{item.likes}</td>
                           </tr>
                       ))
                     }

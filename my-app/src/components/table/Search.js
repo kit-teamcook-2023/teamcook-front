@@ -29,7 +29,7 @@ export const Search = ({type, setType, setQuery}) => {
 						<option value="title">제목</option>
 						<option value="author">작성자</option>
 					</select>
-					<SearchIcon className="search-icon"/>
+					<SearchIcon className="search-icon" fontSize="large"/>
 					<input
 						placeholder="검색어를 입력하세요"
 						className="search-input"
