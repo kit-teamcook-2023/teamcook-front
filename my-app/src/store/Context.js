@@ -18,27 +18,31 @@ const ContextProvider = ({children}) => {
 			const eventSource = new EventSource(`http://34.215.66.235:8000/connect/${payload.uid}`);
 
 			eventSource.onmessage = async (event) => {
-				const res = await event.data;
-				console.log(res)
-				let temp, parsed;
-				parsed = res.split(':');
-				const type = parsed[0]
-				parsed = parsed[1].replace("\n\n", "").split("_");
-				if (type === "chat" || type === "comment") {
-					try {
-						temp = localStorage.getItem(type);
-						temp = JSON.parse(temp);
-						temp[parsed[0]] = parsed.slice(1)
-					}
-					catch {
-						temp = {}
-						temp[parsed[0]] = parsed.slice(1)
-					}
-					finally {
-						localStorage.setItem(type, JSON.stringify(temp))
+		        const res = JSON.parse(event.data);
+				// SSE 데이터를 
+				/*
+				{
+					"comment": {
+						<id1> : ["title", "time"],
+						<id2> : ["title", "time"],
+					},
+					"chat": {
+						<room1> : ["content", "time"],
+						<room2> : ["content", "time"],
+						}
 					}
 				}
-
+				*/
+				// 형태로 받아올 수 있도록 수정
+				for (const type in res) {
+					let log = localStorage.getItem(type);
+					log = JSON.parse(log)
+					if (log == null) log = {}
+            
+					for (const id in res[type]) log[id] = res[type][id]
+					
+					localStorage.setItem(type, JSON.stringify(log))
+				}
 			}
 
 			eventSource.onerror = (event) => {
