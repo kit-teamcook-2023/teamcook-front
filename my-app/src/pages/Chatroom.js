@@ -14,6 +14,7 @@ export const Chatroom = () => {
 
 	const {state} = useLocation();
 	const [message, setMessage] = useState("");
+	const [messageLen, setMessageLen] = useState(0);
 	const [messageList, setMessageList] = useState([]);
 	const [my, setMy] = useState(jwt_decode(localStorage.getItem('token')).uid);
 	const [myName, setMyName] = useState(jwt_decode(localStorage.getItem('token')).nickname);
@@ -23,6 +24,7 @@ export const Chatroom = () => {
 	const handleEnter = (e) => {
 		if(e.key === "Enter")
 			sendMessage()
+			setMessageLen(0)
 	}
 
 	function sendMessage() {
@@ -36,6 +38,7 @@ export const Chatroom = () => {
 				"time": date,
 			}])
 			setMessage("");
+			setMessageLen(0);
 		}
 	}
 
@@ -101,7 +104,12 @@ export const Chatroom = () => {
 	},[state])
 
 	const handleWrite = (e) => {
-		setMessage(e.target.value)
+		const newValue = e.target.value;
+		console.log(newValue.length)
+		if (newValue.length <= 200) {
+		  setMessage(newValue);
+		  setMessageLen(newValue.length)
+		}
 	}
 
 	return (
@@ -131,11 +139,14 @@ export const Chatroom = () => {
 									onKeyDown={handleEnter}
 									value={message}
 								/>
+								<div className="max-message-counter">
+									<p>{messageLen}/200</p>
+								</div>
 								<span className="input-group-btn">
-                                <button className="btn btn-default" type="button" onClick={sendMessage}>
-                                    보내기
-                                </button>
-                            </span>
+									<button className="btn btn-default" type="button" onClick={sendMessage}>
+										보내기
+									</button>
+                            	</span>
 							</div>
 						</div>
 					</div>
