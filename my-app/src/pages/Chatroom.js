@@ -24,14 +24,14 @@ export const Chatroom = () => {
 	const handleEnter = (e) => {
 		if(e.key === "Enter")
 			sendMessage()
-			setMessageLen(0)
 	}
 
 	function sendMessage() {
 		if(ws.current && message !== '') {
 			const date = new Date();
-			const send_msg = message + '|' + date.toLocaleString()
-			ws.current.send(send_msg)
+			const send_msg = {}
+			send_msg[message] = date.toLocaleString()
+			ws.current.send(JSON.stringify(send_msg))
 			setMessageList([...messageList, {
 				"sender": myName,
 				"message": message,
@@ -72,20 +72,15 @@ export const Chatroom = () => {
 			}
 
 			ws.current.onmessage = (event) => {
+				const recv = JSON.parse(event.data)
+				const key = Object.keys(recv)[0]
 
-				const split = event.data.split(":");
-				if(split[0] === "400") {
-					alert(split[1]);
-					navigate('/');
-				}
-				else if (split[0] == "200") {
-					return;
-				}
+				if (key == 400) alert(recv[key]);
+				else if (key == 200) return
 
-				const sender = split[0]
-				const payload = split.slice(1).join(":").split("_")
-				const message = payload[0]
-				const sendtime = payload[1]
+				const sender = key
+				const message = recv[key][0]
+				const sendtime = recv[key][1]
 
 				setMessageList(messageList => [...messageList, {
 					"sender": sender,
@@ -95,8 +90,8 @@ export const Chatroom = () => {
 			}
 		}
 
-		getMessageList();
 		connectSocket();
+		getMessageList();
 
 		return () => {
 			ws.current.close();
