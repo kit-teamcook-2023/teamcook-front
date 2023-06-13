@@ -1,0 +1,38 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-button {
+    width: 100%;
+}
+
+.block-button {
+    display: block;
+    width: 30%;
+}
+
+.link {
+    text-decoration: none !important;
+}
+
+.title {
+    font-size: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.content {
+    font-size: 20px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.like-font {
+    color: #37ACC9
+}
+
+h1 {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.hide-button {
+    opacity: 0;
+}

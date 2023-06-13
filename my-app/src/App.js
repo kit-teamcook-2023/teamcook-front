@@ -30,6 +30,7 @@ import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Edit} from "./pages/Edit";
+import {Profile} from "./pages/Profile";
 
 const GlobalStyle = createGlobalStyle`
   body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
@@ -44,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, p > span, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
     color: ${(props) => props.theme.textColor};
   }
 
@@ -78,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true" ? true : false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true");
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -125,6 +126,7 @@ function App() {
 
                 {/* private route */}
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
+                <Route path='/profile' element={<PrivateRoute component={<Profile />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/edit/:id' element={<PrivateRoute component={<Edit />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />

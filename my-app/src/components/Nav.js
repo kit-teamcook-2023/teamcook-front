@@ -133,7 +133,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
               {
                 isLogin ? (
                     <React.Fragment>
-                      <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a></li>
+                      <li><Link to="/profile"><FontAwesomeIcon icon={faUser} /> 내 프로필</Link></li>
                       <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
                       <li className="divider"></li>
                       <Link to='/' onClick={logout}><FontAwesomeIcon icon={faSignOut} /> 로그아웃</Link>
