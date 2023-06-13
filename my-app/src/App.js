@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input {
     color: ${(props) => props.theme.textColor};
   }
 
