@@ -6,7 +6,8 @@ export const lightTheme = {
     tableColor: '#ffffff',
     yChatColor: '#ffffff',
     mChatColor: '#fef01b',
-    borderColor: '#d3d3d3'
+    borderColor: '#d3d3d3',
+    toggleColor: '#ffeb3b'
 };
 
 export const darkTheme = {
@@ -17,7 +18,8 @@ export const darkTheme = {
     tableColor: '#292929',
     yChatColor: '#d3d3d3',
     mChatColor: '#f3c73c',
-    borderColor: '#000000'
+    borderColor: '#000000',
+    toggleColor: '#696969'
 };
 
 export const Theme = {

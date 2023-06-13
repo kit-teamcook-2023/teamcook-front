@@ -74,14 +74,38 @@ const GlobalStyle = createGlobalStyle`
   .ql-toolbar .ql-picker {
     color: ${(props) => props.theme.textColor};
   }
-
-  .nav>li>button {
+  
+  .toggle {
     width: 50px;
     height: 25px;
+    border-radius: 15px;
     background-color: ${(props) => props.theme.bgColor};
-    border-radius: 30px;
-    border: 1px #696969;
-    border-style: solid;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-style: none;
+  }
+  
+  .toggle-on {
+    background-color: #212121;
+  }
+  
+  .toggle-off {
+    background-color: #99ccff;
+  }
+  
+  .switch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.toggleColor};
+    position: relative;
+    left: 0;
+    transition: left 0.3s;
+  }
+  
+  .toggle-on .switch {
+    left: calc(100% - 20px);
   }
 `;
 

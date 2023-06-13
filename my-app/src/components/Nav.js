@@ -49,7 +49,11 @@ export const Nav = ({toggleDarkMode}) => {
 
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <button type="button" onClick={toggleDarkMode}>{isDarkMode === "true" ? <BsFillSunFill/> : <BsFillMoonFill />}</button>
+            <button type='button' className={`toggle ${isDarkMode === "true" ? 'toggle-on' : 'toggle-off'}`} onClick={toggleDarkMode}>
+              <div className="switch">
+                <span>{isDarkMode === "true" ? <BsFillMoonFill/> : <BsFillSunFill />}</span>
+              </div>
+            </button>
           </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
