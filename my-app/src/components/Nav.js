@@ -22,12 +22,13 @@ import jwt_decode from "jwt-decode";
 import {BsFillSunFill, BsFillMoonFill} from 'react-icons/bs';
 import testImage from './image/github.png'
 
-export const Nav = ({isDarkMode, toggleDarkMode}) => {
+export const Nav = ({toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
     const chats = localStorage.getItem("chat");
     const comments = localStorage.getItem("comment");
+    const isDarkMode = localStorage.getItem("mode");
 
     useEffect(() => {
 
@@ -48,7 +49,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <button type="button" onClick={toggleDarkMode} isdarkmode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
+            <button type="button" onClick={toggleDarkMode}>{isDarkMode === "true" ? <BsFillSunFill/> : <BsFillMoonFill />}</button>
           </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
@@ -254,7 +255,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                 </ul>
                 <div title='해당 광고로 이동합니다.'>
                   <Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
-                    <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '50px', width: '150px'}} alt='광고자리'/>
+                    <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '25px', marginBottom: '25px', width: '150px'}} alt='광고자리'/>
                   </Link>
                 </div>
               </div>

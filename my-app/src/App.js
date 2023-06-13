@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.textColor};
   }
 
-  tr, .nav>li>button {
+  tr {
     background-color: ${(props) => props.theme.tableColor};
   }
 
@@ -74,6 +74,15 @@ const GlobalStyle = createGlobalStyle`
   .ql-toolbar .ql-picker {
     color: ${(props) => props.theme.textColor};
   }
+
+  .nav>li>button {
+    width: 50px;
+    height: 25px;
+    background-color: ${(props) => props.theme.bgColor};
+    border-radius: 30px;
+    border: 1px #696969;
+    border-style: solid;
+  }
 `;
 
 function App() {
@@ -88,7 +97,7 @@ function App() {
         <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <Nav toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
                 {/* 
