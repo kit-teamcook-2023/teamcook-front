@@ -36,3 +36,16 @@ h1 {
 .hide-button {
     opacity: 0;
 }
+
+.error {
+    color: #FF0000;
+    font-size: 1.5rem;
+}
+
+.white-chart {
+    background-color: #B8F8FB;
+}
+
+.black-chart {
+    background-color: #131314;
+}

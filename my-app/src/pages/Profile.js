@@ -28,7 +28,7 @@ export const Profile = () => {
 			catch (err) {
 				console.log("profile", err);
 			}
-		} ;
+		}
 		getInfo();
 	}, [])
 
