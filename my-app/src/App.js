@@ -126,7 +126,7 @@ const GlobalStyle = createGlobalStyle`
     border-color: #212121;
   }
 
-  .btn-success.active, .btn-success:hover, .btn-success:focus, .btn-success.active:hover, .btn-success.active:focus{
+  .btn-success.active, .btn-success:hover, .btn-success:focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success:hover:focus, .btn-success:focus:active{
     background-color: #000000;
     border-color: #000000;
   }

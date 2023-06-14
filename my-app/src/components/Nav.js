@@ -3,17 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
   faCaretDown,
-  faAngleRight,
   faBell,
   faComment,
   faScroll,
   faUser,
-  faGear,
   faSignOut,
   faSearch,
   faWonSign,
-  faChartColumn,
-  faTable,
   faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
 import {Link, useNavigate} from "react-router-dom";
@@ -176,9 +172,6 @@ export const Nav = ({toggleDarkMode}) => {
                   </li>
                   <li>
                     <Link to='/dashboard'><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</Link>
-                  </li>
-                  <li>
-                    <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
                   </li>
                   <li>
                     <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래</Link>
