@@ -15,6 +15,7 @@ export const Chatroom = () => {
 
 	const {state} = useLocation();
 	const [message, setMessage] = useState("");
+	const [messageLen, setMessageLen] = useState(0);
 	const [messageList, setMessageList] = useState([]);
 	const [my, setMy] = useState(jwt_decode(localStorage.getItem('token')).uid);
 	const [myName, setMyName] = useState(jwt_decode(localStorage.getItem('token')).nickname);
@@ -29,14 +30,16 @@ export const Chatroom = () => {
 	function sendMessage() {
 		if(ws.current && message !== '') {
 			const date = new Date();
-			const send_msg = message + '|' + date.toLocaleString()
-			ws.current.send(send_msg)
+			const send_msg = {}
+			send_msg[message] = date.toLocaleString()
+			ws.current.send(JSON.stringify(send_msg))
 			setMessageList([...messageList, {
 				"sender": myName,
 				"message": message,
 				"time": date,
 			}])
 			setMessage("");
+			setMessageLen(0);
 		}
 	}
 
@@ -70,20 +73,15 @@ export const Chatroom = () => {
 			}
 
 			ws.current.onmessage = (event) => {
+				const recv = JSON.parse(event.data)
+				const key = Object.keys(recv)[0]
 
-				const split = event.data.split(":");
-				if(split[0] === "400") {
-					alert(split[1]);
-					navigate('/');
-				}
-				else if (split[0] == "200") {
-					return;
-				}
+				if (key == 400) alert(recv[key]);
+				else if (key == 200) return
 
-				const sender = split[0]
-				const payload = split.slice(1).join(":").split("_")
-				const message = payload[0]
-				const sendtime = payload[1]
+				const sender = key
+				const message = recv[key][0]
+				const sendtime = recv[key][1]
 
 				setMessageList(messageList => [...messageList, {
 					"sender": sender,
@@ -93,8 +91,8 @@ export const Chatroom = () => {
 			}
 		}
 
-		getMessageList();
 		connectSocket();
+		getMessageList();
 
 		return () => {
 			if(ws.current.readyState === 1)
@@ -103,7 +101,12 @@ export const Chatroom = () => {
 	},[state])
 
 	const handleWrite = (e) => {
-		setMessage(e.target.value)
+		const newValue = e.target.value;
+		console.log(newValue.length)
+		if (newValue.length <= 200) {
+		  setMessage(newValue);
+		  setMessageLen(newValue.length)
+		}
 	}
 
 	return (
@@ -133,11 +136,14 @@ export const Chatroom = () => {
 									onKeyDown={handleEnter}
 									value={message}
 								/>
+								<div className="max-message-counter">
+									<p>{messageLen}/200</p>
+								</div>
 								<span className="input-group-btn">
-                                <button className="btn btn-default" type="button" onClick={sendMessage}>
-                                    보내기
-                                </button>
-                            </span>
+									<button className="btn btn-default" type="button" onClick={sendMessage}>
+										보내기
+									</button>
+                            	</span>
 							</div>
 						</div>
 					</div>
