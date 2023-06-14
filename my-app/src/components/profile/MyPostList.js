@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import './css/Profile.css'
 import {useState} from "react";
 import axios from "axios";
+import {CircularProgress} from "@mui/material";
 
 export const MyPostList = ({postCount}) => {
 
@@ -40,19 +41,25 @@ export const MyPostList = ({postCount}) => {
 	return (
 		<div>
 			{
-				posts.map((post) => (
-					<div key={post.id} className="panel panel-default">
-						<Link to={`/post/${post.id}`} className="link">
-							<div style={{padding: '5px'}}>
-								<p className="title"><span>({changeLang(post.board)}) </span>{post.title}</p>
-								<p>좋아요 수 <span className="like-font">{post.like}</span> · 댓글 개수 <span className="like-font">{post.comments}</span></p>
-								<p>작성일 {new Date(post.date).toLocaleString()}</p>
+				posts.length > 0 ? (
+					posts.map((post) => (
+						<div key={post.id} className="panel panel-default">
+							<Link to={`/post/${post.id}`} className="link">
+								<div style={{padding: '5px'}}>
+									<p className="title"><span>({changeLang(post.board)}) </span>{post.title}</p>
+									<p>좋아요 수 <span className="like-font">{post.like}</span> · 댓글 개수 <span className="like-font">{post.comments}</span></p>
+									<p>작성일 {new Date(post.date).toLocaleString()}</p>
+								</div>
+							</Link>
+						</div>
+					))) : (
+						Array(10).fill().map((_, index) => (
+							<div key={index} className="panel panel-default" style={{textAlign: 'center', height: '120px', position: 'relative'}}>
+
 							</div>
-						</Link>
-					</div>
-				))
+						))
+					)
 			}
-					<button>목록 더 보기</button>
 			{
 				postCount > (page + 1) * 20 ? (
 					<div>

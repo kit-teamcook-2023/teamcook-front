@@ -28,17 +28,24 @@ export const MyCommentList = ({commentCount}) => {
 	return (
 		<div>
 			{
-				comments.map((comment, index) => (
-					<div key={index} className="panel panel-default">
-						<Link to={`/post/${comment.postId}`} className="link">
-							<div style={{padding: '5px'}}>
-								<p className="content">{comment.comment}</p>
-								<p className="like-font">{comment.title}<span>에 남긴 댓글</span></p>
-								<p>작성일 {new Date(comment.date).toLocaleDateString()}</p>
+				comments.length > 0 ? (
+					comments.map((comment, index) => (
+						<div key={index} className="panel panel-default">
+							<Link to={`/post/${comment.postId}`} className="link">
+								<div style={{padding: '5px'}}>
+									<p className="content">{comment.comment}</p>
+									<p className="like-font">{comment.title}<span>에 남긴 댓글</span></p>
+									<p>작성일 {new Date(comment.date).toLocaleDateString()}</p>
+								</div>
+							</Link>
+						</div>
+					))) : (
+						Array(10).fill().map((_, index) => (
+							<div key={index} className="panel panel-default" style={{height: '120px'}}>
+
 							</div>
-						</Link>
-					</div>
-				))
+						))
+					)
 			}
 			{
 				commentCount > (page + 1) * 20 ? (

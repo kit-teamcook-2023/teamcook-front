@@ -10,7 +10,7 @@ export const Profile = () => {
 
 	const [name, setName] = useState("닉네임");
 	const [date, setDate] = useState("1970-01-01T00:00:00");
-	const [info, setInfo] = useState({});
+	const [info, setInfo] = useState(null);
 	const [query, setQuery] = useState("post");
 
 	useEffect(() => {
@@ -30,7 +30,7 @@ export const Profile = () => {
 			}
 		} ;
 		getInfo();
-	}, [name])
+	}, [])
 
 	return (
 		<div id="page-wrapper">
@@ -39,20 +39,20 @@ export const Profile = () => {
 					<h1 className="page-header">내 프로필</h1>
 				</div>
 			</div>
-			<MyProfile
-				name={name}
-				setName={setName}
-				createdDate={date}
-			/>
+				<MyProfile
+					name={name}
+					createdDate={date}
+					setName={setName}
+				/>
 			<ButtonList
 				query={query}
 				setQuery={setQuery}
-				postCount={info.writing_count}
-				commentCount={info.comment_count}
+				postCount={info?.writing_count}
+				commentCount={info?.comment_count}
 			/>
 			<div style={{marginTop: '50px'}}>
-				{query === "post" && <MyPostList postCount={info.writing_count}/>}
-				{query === "comment" && <MyCommentList commentCount={info.comment_count}/>}
+				{query === "post" && <MyPostList postCount={info?.writing_count}/>}
+				{query === "comment" && <MyCommentList commentCount={info?.comment_count}/>}
 				{query === "gas" && <MyGasFee />}
 			</div>
 		</div>
