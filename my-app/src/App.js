@@ -29,6 +29,7 @@ import MorrisChart from "./pages/MorrisChart";
 import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
+import {Profile} from "./pages/Profile";
 
 const GlobalStyle = createGlobalStyle`
   body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background {
@@ -156,6 +157,7 @@ function App() {
                 <Route path='/life-hack' element={<LifeHack/>} />
                 <Route path='/post/:id' element={<Post/>} />
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
+                <Route path='/profile' element={<Profile />} />
 
 
                 <Route path='/morris-chart' element={MorrisChart} />
