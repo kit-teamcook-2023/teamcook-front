@@ -49,7 +49,7 @@ export const Post = () => {
 				setLikes={setLikes}
 				date={date}
 			/>
-			<div title='해당 광고로 이동합니다.'>
+			<div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>
 				<Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
 					<img src={testImage} style={{margin: 'auto', display: 'block', marginBottom: '30px', width: '250px'}} alt='광고자리'/>
 				</Link>

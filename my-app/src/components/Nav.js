@@ -134,7 +134,6 @@ export const Nav = ({toggleDarkMode}) => {
                 isLogin ? (
                     <React.Fragment>
                       <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a></li>
-                      <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
                       <li className="divider"></li>
                       <Link to='/' onClick={logout}><FontAwesomeIcon icon={faSignOut} /> 로그아웃</Link>
                     </React.Fragment>
@@ -257,7 +256,7 @@ export const Nav = ({toggleDarkMode}) => {
                     {/* <!-- /.nav-second-level --> */}
                   </li>
                 </ul>
-                <div title='해당 광고로 이동합니다.'>
+                <div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>
                   <Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
                     <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '25px', marginBottom: '25px', width: '150px'}} alt='광고자리'/>
                   </Link>

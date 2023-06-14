@@ -31,12 +31,28 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background {
     background-color: ${(props) => props.theme.bgColor};
   }
 
-  .nav>li>a:hover, .nav>li>a:focus, .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover, .open>a {
+  .navbar {
+    background-color: ${(props) => props.theme.navColor};
+  }
+
+  .sidebar, .panel {
+    background-color: ${(props) => props.theme.sideColor};
+  }
+
+  .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover {
     background-color: ${(props) => props.theme.hoverColor};
+  }
+
+  .nav>li>a.dropdown-toggle:hover, .nav>li>a.dropdown-toggle:focus, .open>a {
+    background-color: ${(props) => props.theme.nHoverColor};
+  }
+
+  .nav>li>a:hover, .nav>li>a:focus {
+    background-color: ${(props) => props.theme.sHoverColor};
   }
 
   .nav>li>a, .pagination>li>a, .pagination>li>a:hover {
@@ -87,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   .toggle-on {
-    background-color: #212121;
+    background-color: #000000;
   }
   
   .toggle-off {
@@ -125,8 +141,8 @@ function App() {
             <main role="main">
               <Routes>
                 {/* 
-                  특정 이상의 좋아요 개수를 가진 글들을 모은 테이블 보여줌
-                  Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
+                  ?��?�� ?��?��?�� 좋아?�� 개수�? �?�? �??��?�� 모�?? ?��?���? 보여�?
+                  Dashboard ?��?���??��?�� showHotboard 조건?�� ?��?�� ?��?�� ?��?��블을 보여줄�?? 보여주�?? ?��?���? ?��?��
                 */}
                 <Route path='/' element={<Dashboard showHotboard={true}/>} />
                 <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
