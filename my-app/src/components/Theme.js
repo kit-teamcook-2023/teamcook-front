@@ -1,9 +1,8 @@
 export const lightTheme = {
     bgColor: '#f8f8ff',
-    navColor: '#d0fc5c',
     sideColor: '#f0f8ff',
     hoverColor: '#dcdcdc',
-    nHoverColor: '#7fff00',
+    nHoverColor: '#d0fc5c',
     sHoverColor: '#87cefa',
     textColor: '#000000',
     nTextColor: '#337ab7',
@@ -16,7 +15,6 @@ export const lightTheme = {
 
 export const darkTheme = {
     bgColor: '#333335',
-    navColor: '#212121',
     sideColor: '#212121',
     hoverColor: '#696969',
     nHoverColor: '#333335',

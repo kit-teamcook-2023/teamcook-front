@@ -120,6 +120,16 @@ const GlobalStyle = createGlobalStyle`
   .toggle-on .switch {
     left: calc(100% - 20px);
   }
+
+  .btn-success {
+    background-color: #212121;
+    border-color: #212121;
+  }
+
+  .btn-success.active, .btn-success:hover, .btn-success:focus, .btn-success.active:hover, .btn-success.active:focus{
+    background-color: #000000;
+    border-color: #000000;
+  }
 `;
 
 function App() {
