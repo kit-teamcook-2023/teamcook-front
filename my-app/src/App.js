@@ -29,27 +29,41 @@ import MorrisChart from "./pages/MorrisChart";
 import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
-import {Edit} from "./pages/Edit";
-import {Profile} from "./pages/Profile";
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background {
     background-color: ${(props) => props.theme.bgColor};
   }
 
-  .nav>li>a:hover, .nav>li>a:focus, .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover, .open>a {
+  .navbar {
+    background-color: ${(props) => props.theme.navColor};
+  }
+
+  .sidebar, .panel {
+    background-color: ${(props) => props.theme.sideColor};
+  }
+
+  .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover {
     background-color: ${(props) => props.theme.hoverColor};
+  }
+
+  .nav>li>a.dropdown-toggle:hover, .nav>li>a.dropdown-toggle:focus, .open>a {
+    background-color: ${(props) => props.theme.nHoverColor};
+  }
+
+  .nav>li>a:hover, .nav>li>a:focus {
+    background-color: ${(props) => props.theme.sHoverColor};
   }
 
   .nav>li>a, .pagination>li>a, .pagination>li>a:hover {
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, p > span, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input {
     color: ${(props) => props.theme.textColor};
   }
 
-  tr, .nav>li>button {
+  tr {
     background-color: ${(props) => props.theme.tableColor};
   }
 
@@ -76,6 +90,39 @@ const GlobalStyle = createGlobalStyle`
   .ql-toolbar .ql-picker {
     color: ${(props) => props.theme.textColor};
   }
+  
+  .toggle {
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: ${(props) => props.theme.bgColor};
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-style: none;
+  }
+  
+  .toggle-on {
+    background-color: #000000;
+  }
+  
+  .toggle-off {
+    background-color: #99ccff;
+  }
+  
+  .switch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.toggleColor};
+    position: relative;
+    left: 0;
+    transition: left 0.3s;
+  }
+  
+  .toggle-on .switch {
+    left: calc(100% - 20px);
+  }
 `;
 
 function App() {
@@ -90,7 +137,7 @@ function App() {
         <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <Nav toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
                 {/* 
@@ -126,9 +173,7 @@ function App() {
 
                 {/* private route */}
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
-                <Route path='/profile' element={<PrivateRoute component={<Profile />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
-                <Route path='/edit/:id' element={<PrivateRoute component={<Edit />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>

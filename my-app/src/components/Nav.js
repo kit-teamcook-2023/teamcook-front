@@ -20,14 +20,16 @@ import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
 import jwt_decode from "jwt-decode";
 import {BsFillSunFill, BsFillMoonFill} from 'react-icons/bs';
+import testImage from './image/github.png'
 import {faCamera} from "@fortawesome/free-solid-svg-icons/faCamera";
 
-export const Nav = ({isDarkMode, toggleDarkMode}) => {
+export const Nav = ({toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
     const chats = localStorage.getItem("chat");
     const comments = localStorage.getItem("comment");
+    const isDarkMode = localStorage.getItem("mode");
 
     useEffect(() => {
 
@@ -53,7 +55,11 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <button type="button" onClick={toggleDarkMode} isdarkmode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
+            <button type='button' className={`toggle ${isDarkMode === "true" ? 'toggle-on' : 'toggle-off'}`} onClick={toggleDarkMode}>
+              <div className="switch">
+                <span>{isDarkMode === "true" ? <BsFillMoonFill/> : <BsFillSunFill />}</span>
+              </div>
+            </button>
           </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
@@ -134,7 +140,6 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                 isLogin ? (
                     <React.Fragment>
                       <li><Link to="/profile"><FontAwesomeIcon icon={faUser} /> 내 프로필</Link></li>
-                      <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
                       <li className="divider"></li>
                       <Link to='/' onClick={logout}><FontAwesomeIcon icon={faSignOut} /> 로그아웃</Link>
                     </React.Fragment>
@@ -191,6 +196,11 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁</Link>
                   </li>
                 </ul>
+                <div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>
+                  <Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
+                    <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '25px', marginBottom: '25px', width: '150px'}} alt='광고자리'/>
+                  </Link>
+                </div>
               </div>
               {/* <!-- /.sidebar-collapse --> */}
             </div>
