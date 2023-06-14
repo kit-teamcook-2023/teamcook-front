@@ -25,7 +25,7 @@ export const MyProfile = ({name, createdDate, setName}) => {
 
 		const diff = currentDate.getTime() - targetDate.getTime();
 
-		return Math.floor(diff / (1000 * 60 * 60 * 24));
+		return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
 	}
 
 	return (
@@ -40,6 +40,7 @@ export const MyProfile = ({name, createdDate, setName}) => {
 									name={name}
 									setName={setName}
 									setIsEdit={setIsEdit}
+									setShowButton={setShowButton}
 								/>
 							) : (
 								<React.Fragment>
