@@ -32,12 +32,8 @@ import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar {
     background-color: ${(props) => props.theme.bgColor};
-  }
-
-  .navbar {
-    background-color: ${(props) => props.theme.navColor};
   }
 
   .sidebar, .panel {
