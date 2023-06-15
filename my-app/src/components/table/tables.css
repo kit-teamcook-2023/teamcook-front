@@ -1,7 +1,7 @@
-
 .search-line {
     margin: 20px;
     border: 2px solid #E0E0E0;
+    border-radius: 30px;
 }
 
 .search-box {
@@ -22,15 +22,20 @@
     margin-left: 5px;
     outline: none;
     height: 17px;
-    width: 80%;
+    width: 100%;
     color: #595959;
 }
 
 .form-select {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 30px;
     margin-right: 10px;
     background-color: #fff;
     color: #333;
+}
+
+.options {
+    border: 1px solid red;
+    border-radius: 30px;
 }

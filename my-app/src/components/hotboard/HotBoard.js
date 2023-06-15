@@ -25,7 +25,7 @@ export const HotBoard = () => {
     return (
         <div>
             <div className="col-lg-12">
-              <h1 className="page-header">인기 게시글</h1>
+              <h1 className="page-header">실시간 인기글</h1>
             </div>
             <div className="panel panel-default">
                 <div className="panel-body">
@@ -49,7 +49,7 @@ export const HotBoard = () => {
                                             <td>{item.title}</td>
                                             <td>{item.author}</td>
                                             <td>{item.date}</td>
-                                            <td>{item.likes}</td>
+                                            <td style={{color: '#37ACC9'}}>{item.likes}</td>
                                     </tr>
                                 ))
                             }

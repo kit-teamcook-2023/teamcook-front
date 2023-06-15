@@ -5,6 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import io from "socket.io-client";
 import jwt_decode from "jwt-decode";
 import {Chat} from "../components/chat/Chat";
+import {Context} from "../store/Context";
 
 export const Chatroom = () => {
 
@@ -94,7 +95,8 @@ export const Chatroom = () => {
 		getMessageList();
 
 		return () => {
-			ws.current.close();
+			if(ws.current.readyState === 1)
+				ws.current.close();
 		}
 	},[state])
 

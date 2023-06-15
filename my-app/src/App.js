@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {BrowserRouter, Route, Router, Routes} from 'react-router-dom';
 import './App.css';
 import {Nav} from './components/Nav';
-import Dashboard from './pages/Dashboard';
 import FlotChart from './pages/FlotChart';
 import Forms from './pages/Forms';
 import PanelWeels from './pages/PanelWeels';
@@ -29,25 +28,41 @@ import MorrisChart from "./pages/MorrisChart";
 import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
+import {Profile} from "./pages/Profile";
+import {Home} from './pages/Home'
+import {DashBoard} from "./pages/DashBoard";
+
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar {
     background-color: ${(props) => props.theme.bgColor};
   }
 
-  .nav>li>a:hover, .nav>li>a:focus, .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover, .open>a {
+  .sidebar, .panel {
+    background-color: ${(props) => props.theme.sideColor};
+  }
+
+  .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover {
     background-color: ${(props) => props.theme.hoverColor};
+  }
+
+  .nav>li>a.dropdown-toggle:hover, .nav>li>a.dropdown-toggle:focus, .open>a {
+    background-color: ${(props) => props.theme.nHoverColor};
+  }
+
+  .nav>li>a:hover, .nav>li>a:focus {
+    background-color: ${(props) => props.theme.sHoverColor};
   }
 
   .nav>li>a, .pagination>li>a, .pagination>li>a:hover {
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input {
     color: ${(props) => props.theme.textColor};
   }
 
-  tr, .nav>li>button {
+  tr {
     background-color: ${(props) => props.theme.tableColor};
   }
 
@@ -74,10 +89,53 @@ const GlobalStyle = createGlobalStyle`
   .ql-toolbar .ql-picker {
     color: ${(props) => props.theme.textColor};
   }
+  
+  .toggle {
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: ${(props) => props.theme.bgColor};
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-style: none;
+  }
+  
+  .toggle-on {
+    background-color: #000000;
+  }
+  
+  .toggle-off {
+    background-color: #99ccff;
+  }
+  
+  .switch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.toggleColor};
+    position: relative;
+    left: 0;
+    transition: left 0.3s;
+  }
+  
+  .toggle-on .switch {
+    left: calc(100% - 20px);
+  }
+
+  .btn-success {
+    background-color: #212121;
+    border-color: #212121;
+  }
+
+  .btn-success.active, .btn-success:hover, .btn-success:focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success:hover:focus, .btn-success:focus:active{
+    background-color: #000000;
+    border-color: #000000;
+  }
 `;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true" ? true : false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true");
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -88,16 +146,14 @@ function App() {
         <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <Nav toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
                 {/* 
                   특정 이상의 좋아요 개수를 가진 글들을 모은 테이블 보여줌
                   Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
                 */}
-                <Route path='/' element={<Dashboard showHotboard={true}/>} />
-                <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
-
+                <Route path='/' element={<Home />} />
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/karrot' element={<Karrot/>} />
@@ -126,6 +182,8 @@ function App() {
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
+                <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
+                <Route path='/dashboard' element={<PrivateRoute component={<DashBoard />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>

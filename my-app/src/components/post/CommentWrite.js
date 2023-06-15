@@ -14,6 +14,15 @@ export const CommentWrite = ({postId, comments, setComments}) => {
 	const [rows, setRows] = useState(2);
 
 	const handleChange = (event) => {
+		if(!isLogin) {
+			const result = confirm("로그인 하실래요?");
+			if(result) {
+				navigate("/login");
+				return;
+			}
+			else
+				return;
+		}
 		setComment(event.target.value);
 		setRows(event.target.value.split('\n').length + 1);
 	}
