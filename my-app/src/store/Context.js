@@ -52,7 +52,7 @@ const ContextProvider = ({children}) => {
 			}
 		}
 
-	}, [isLogin])
+	}, [isLogin, localStorage.getItem('chat'), localStorage.getItem('comment')])
 
 	const logout = () => {
 		setIsLogin(false);

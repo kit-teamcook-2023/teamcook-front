@@ -56,14 +56,14 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
             <ul className="dropdown-menu dropdown-messages">
               {
                 chats !== null && localStorage.getItem('token') ? (
-                  Object.entries(JSON.parse(chats)).map((chat) => {
+                  Object.entries(JSON.parse(chats)).map((chat, idx) => {
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
   
                   return (
                     <React.Fragment>
-                    <li>
+                    <li key={idx}>
                     <Link to={`/chatroom`} state={you}>
                         <FontAwesomeIcon icon={faComment}/> {chat[0].length > 10 ? chat[0].slice(0, 10) + '...' : chat[0]} : 새로운 채팅
                         <span className="pull-right text-muted small">{chat[1][1]}</span>
@@ -96,7 +96,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
-                      <li>
+                      <li key={idx}>
                         <Link to={`/post/${key[0]}`}>
                           <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 5 ? key[1][0].slice(0, 5) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
