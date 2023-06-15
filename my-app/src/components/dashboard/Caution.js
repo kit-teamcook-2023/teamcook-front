@@ -1,7 +1,8 @@
 
 export const Caution = () => {
+
 	return (
-		<div style={{backgroundColor: '#AAAAAA', marginTop: '50px'}}>
+		<div className='caution' style={{marginTop: '50px'}}>
 			<div style={{textAlign: 'center', marginBottom: '50px'}}>
 				<h1 style={{paddingTop: '10px'}}>주의사항</h1>
 			</div>

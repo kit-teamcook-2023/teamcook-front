@@ -30,11 +30,11 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
 import {Home} from './pages/Home'
-import {DashBoard} from "./pages/DashBoard";
+import {DashBoard} from "./pages/Dashboard";
 
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar, .form-select {
     background-color: ${(props) => props.theme.bgColor};
   }
 
@@ -58,11 +58,11 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input, .form-select, .form-select option {
     color: ${(props) => props.theme.textColor};
   }
 
-  tr {
+  tr, .caution {
     background-color: ${(props) => props.theme.tableColor};
   }
 
