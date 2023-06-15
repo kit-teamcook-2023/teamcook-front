@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {BrowserRouter, Route, Router, Routes} from 'react-router-dom';
 import './App.css';
 import {Nav} from './components/Nav';
-import Dashboard from './pages/Dashboard';
 import FlotChart from './pages/FlotChart';
 import Forms from './pages/Forms';
 import PanelWeels from './pages/PanelWeels';
@@ -30,6 +29,9 @@ import {NotFound} from "./pages/NotFound";
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
+import {Home} from './pages/Home'
+import {DashBoard} from "./pages/DashBoard";
+
 
 const GlobalStyle = createGlobalStyle`
   body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar {
@@ -151,9 +153,7 @@ function App() {
                   특정 이상의 좋아요 개수를 가진 글들을 모은 테이블 보여줌
                   Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
                 */}
-                <Route path='/' element={<Dashboard showHotboard={true}/>} />
-                <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
-
+                <Route path='/' element={<Home />} />
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/karrot' element={<Karrot/>} />
@@ -163,7 +163,6 @@ function App() {
                 <Route path='/life-hack' element={<LifeHack/>} />
                 <Route path='/post/:id' element={<Post/>} />
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
-                <Route path='/profile' element={<Profile />} />
 
 
                 <Route path='/morris-chart' element={MorrisChart} />
@@ -183,6 +182,7 @@ function App() {
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
+                <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
