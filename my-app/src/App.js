@@ -183,6 +183,7 @@ function App() {
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
+                <Route path='/dashboard' element={<PrivateRoute component={<DashBoard />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
