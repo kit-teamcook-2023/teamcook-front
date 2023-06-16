@@ -160,22 +160,22 @@ export const Nav = ({toggleDarkMode}) => {
               <div className="sidebar-nav navbar-collapse">
                 <ul className="nav" id="side-menu">
                   <li>
-                    <Link to='/dashboard'><FontAwesomeIcon icon={faGasPump} /> 지역별 가스비</Link>
+                    <Link to='/dashboard'><FontAwesomeIcon icon={faGasPump} /> 지역별 가스비<br/><span>우리 지역은 가스비가 얼마지?</span></Link>
                   </li>
                   <li>
-                    <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래</Link>
+                    <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래<br/><span>네고 되나요? ㅠㅠ</span></Link>
                   </li>
                   <li>
-                    <Link to='/group-buying'><FontAwesomeIcon icon={faUserGroup} /> 공동 구매</Link>
+                    <Link to='/group-buying'><FontAwesomeIcon icon={faUserGroup} /> 공동 구매<br/><span>이거 같이 살 사람~?</span></Link>
                   </li>
                   <li>
-                    <Link to='/product-review'><FontAwesomeIcon icon={faCamera} /> 물품 리뷰</Link>
+                    <Link to='/product-review'><FontAwesomeIcon icon={faCamera} /> 물품 리뷰<br/><span>이 물건 괜찮더라구요!</span></Link>
                   </li>
                   <li>
-                    <Link to='/government'><FontAwesomeIcon icon={faBullhorn} /> 정부 정책</Link>
+                    <Link to='/government'><FontAwesomeIcon icon={faBullhorn} /> 정부 정책<br/><span>공문이요~ 공문~</span></Link>
                   </li>
                   <li>
-                    <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁</Link>
+                    <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁<br/><span>이건 개꿀팁인데...</span></Link>
                   </li>
                 </ul>
                 <div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>

@@ -132,6 +132,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: #000000;
     border-color: #000000;
   }
+
+  .nav>li>a>span {
+    font-size: 10px;
+  }
 `;
 
 function App() {
