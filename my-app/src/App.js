@@ -136,6 +136,11 @@ const GlobalStyle = createGlobalStyle`
   .nav>li>a>span {
     font-size: 10px;
   }
+
+  .gas-table {
+    margin: auto; 
+    text-align: center;
+  }
 `;
 
 function App() {
