@@ -30,7 +30,7 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
 import {Home} from './pages/Home'
-import {DashBoard} from "./pages/DashBoard";
+import {DashBoard} from "./pages/Dashboard";
 
 
 const GlobalStyle = createGlobalStyle`
