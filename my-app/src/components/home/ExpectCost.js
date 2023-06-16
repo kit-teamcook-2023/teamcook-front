@@ -47,6 +47,22 @@ export const ExpectCost = () => {
 				},
 			]
 			setGasFee(data)
+		}).catch( (err) => {
+			const data = [
+				{
+					name: '이번달 가스비',
+					data: [-400],
+				},
+				{
+					name: '저번달 가스비',
+					data: [-400],
+				},
+				{
+					name: '이번 달 예상 가스비',
+					data: [-400],
+				},
+			]
+			setGasFee(data)
 		})
 		setLoading(false)
 	}
@@ -89,7 +105,10 @@ export const ExpectCost = () => {
 			formatter: datalabelsFormatter,
 		},
 		subtitle: {
-			text: ['* 해당 영역의 아무 곳이나 누르면 새로고침 돼요! *','* -1으로 떠있는 경우는 아직 불러오기 전이에요! *', '* 여러분의 데이터는 소중하니까요. *'],
+			text: [
+				'* 해당 영역의 아무 곳이나 누르면 새로고침 돼요! *',
+				'* -400은 아직 지원하지 않는 지역이에요. *'	
+			],
 			align: 'center',
 			style: {
 				fontSize: '15px'
