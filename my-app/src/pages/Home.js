@@ -16,7 +16,7 @@ export const Home = () => {
         <div id="page-wrapper">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className="page-header">이번달 예상 가스비</h1>
+              <h1 className="page-header">실시간 가스비</h1>
             </div>
           </div>
           <div>

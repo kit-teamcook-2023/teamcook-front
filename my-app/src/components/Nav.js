@@ -10,7 +10,7 @@ import {
   faSignOut,
   faSearch,
   faWonSign,
-  faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn
+  faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn, faGasPump
 } from '@fortawesome/free-solid-svg-icons';
 import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
@@ -171,7 +171,7 @@ export const Nav = ({toggleDarkMode}) => {
                     {/* <!-- /input-group --> */}
                   </li>
                   <li>
-                    <Link to='/dashboard'><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</Link>
+                    <Link to='/dashboard'><FontAwesomeIcon icon={faGasPump} /> 지역별 가스비</Link>
                   </li>
                   <li>
                     <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래</Link>
