@@ -12,7 +12,7 @@ export const Government = () => {
 	
 	return (
 		<Tables
-			title={"정부 공고"}
+			title={"정부 정책"}
 			category={location.pathname.substring(1)}
 		/>
 	)
