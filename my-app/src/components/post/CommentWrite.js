@@ -55,6 +55,8 @@ export const CommentWrite = ({postId, comments, setComments}) => {
 				return;
 			}
 
+			console.log(postId, comment)
+
 			const res = await axios.post('http://34.215.66.235:8000/comment', {
 				"post_id": postId,
 				"content": comment,
