@@ -163,7 +163,7 @@ function App() {
                   Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
                 */}
                 <Route path='/' element={<Home />} />
-
+                <Route path='/dashboard' element={<DashBoard />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/karrot' element={<Karrot/>} />
                 <Route path='/group-buying' element={<GroupBuying/>} />
@@ -192,7 +192,6 @@ function App() {
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
-                <Route path='/dashboard' element={<PrivateRoute component={<DashBoard />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
