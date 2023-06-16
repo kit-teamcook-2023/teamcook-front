@@ -5,7 +5,7 @@ import {barData} from "../data/data"
 export const BarGraph = () => {
 
 	return (
-		<div  className="col-md-4">
+		<div  className="col-md-6">
 			<Chart
 				options={barData.options}
 				series={barData.series}

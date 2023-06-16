@@ -30,11 +30,11 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
 import {Home} from './pages/Home'
-import {DashBoard} from "./pages/DashBoard";
+import {DashBoard} from "./pages/Dashboard";
 
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar {
+  body, #page-wrapper, .dropdown-menu, .form-control, .pagination>li>a, .panel-footer, .chat-background, .navbar, .form-select {
     background-color: ${(props) => props.theme.bgColor};
   }
 
@@ -58,11 +58,11 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control, .search-input, .form-select, .form-select option {
     color: ${(props) => props.theme.textColor};
   }
 
-  tr {
+  tr, .caution {
     background-color: ${(props) => props.theme.tableColor};
   }
 
@@ -132,6 +132,15 @@ const GlobalStyle = createGlobalStyle`
     background-color: #000000;
     border-color: #000000;
   }
+
+  .nav>li>a>span {
+    font-size: 10px;
+  }
+
+  .gas-table {
+    margin: auto; 
+    text-align: center;
+  }
 `;
 
 function App() {
@@ -154,7 +163,7 @@ function App() {
                   Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
                 */}
                 <Route path='/' element={<Home />} />
-
+                <Route path='/dashboard' element={<DashBoard />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/karrot' element={<Karrot/>} />
                 <Route path='/group-buying' element={<GroupBuying/>} />
@@ -183,7 +192,6 @@ function App() {
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
-                <Route path='/dashboard' element={<PrivateRoute component={<DashBoard />}/>} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>

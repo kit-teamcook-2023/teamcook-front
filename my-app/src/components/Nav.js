@@ -10,7 +10,7 @@ import {
   faSignOut,
   faSearch,
   faWonSign,
-  faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn
+  faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn, faGasPump
 } from '@fortawesome/free-solid-svg-icons';
 import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
@@ -64,14 +64,14 @@ export const Nav = ({toggleDarkMode}) => {
             <ul className="dropdown-menu dropdown-messages">
               {
                 chats !== null && localStorage.getItem('token') ? (
-                  Object.entries(JSON.parse(chats)).map((chat) => {
+                  Object.entries(JSON.parse(chats)).map((chat, idx) => {
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
   
                   return (
                     <React.Fragment>
-                    <li>
+                    <li key={idx}>
                     <Link to={`/chatroom`} state={you}>
                         <FontAwesomeIcon icon={faComment}/> {chat[0].length > 10 ? chat[0].slice(0, 10) + '...' : chat[0]} : 새로운 채팅
                         <span className="pull-right text-muted small">{chat[1][1]}</span>
@@ -104,7 +104,7 @@ export const Nav = ({toggleDarkMode}) => {
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
-                      <li>
+                      <li key={idx}>
                         <Link to={`/post/${key[0]}`}>
                           <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 5 ? key[1][0].slice(0, 5) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
@@ -159,34 +159,23 @@ export const Nav = ({toggleDarkMode}) => {
             <div className="navbar-default sidebar" role="navigation">
               <div className="sidebar-nav navbar-collapse">
                 <ul className="nav" id="side-menu">
-                  <li className="sidebar-search">
-                    <div className="input-group custom-search-form">
-                      <input type="text" className="form-control" placeholder="검색어를 입력하세요" />
-                      <span className="input-group-btn">
-                    <button className="btn btn-default" type="button">
-                    <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                  </span>
-                    </div>
-                    {/* <!-- /input-group --> */}
+                  <li>
+                    <Link to='/dashboard'><FontAwesomeIcon icon={faGasPump} /> 지역별 가스비<br/><span>우리 지역은 가스비가 얼마지?</span></Link>
                   </li>
                   <li>
-                    <Link to='/dashboard'><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</Link>
+                    <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래<br/><span>네고 되나요? ㅠㅠ</span></Link>
                   </li>
                   <li>
-                    <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래</Link>
+                    <Link to='/group-buying'><FontAwesomeIcon icon={faUserGroup} /> 공동 구매<br/><span>이거 같이 살 사람~?</span></Link>
                   </li>
                   <li>
-                    <Link to='/group-buying'><FontAwesomeIcon icon={faUserGroup} /> 공동 구매</Link>
+                    <Link to='/product-review'><FontAwesomeIcon icon={faCamera} /> 물품 리뷰<br/><span>이 물건 괜찮더라구요!</span></Link>
                   </li>
                   <li>
-                    <Link to='/product-review'><FontAwesomeIcon icon={faCamera} /> 물품 리뷰</Link>
+                    <Link to='/government'><FontAwesomeIcon icon={faBullhorn} /> 정부 정책<br/><span>공문이요~ 공문~</span></Link>
                   </li>
                   <li>
-                    <Link to='/government'><FontAwesomeIcon icon={faBullhorn} /> 정부 정책</Link>
-                  </li>
-                  <li>
-                    <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁</Link>
+                    <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁<br/><span>이건 개꿀팁인데...</span></Link>
                   </li>
                 </ul>
                 <div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>

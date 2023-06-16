@@ -2,7 +2,6 @@ import React from "react";
 import Chart from 'react-apexcharts';
 import {PieGraph} from "../components/dashboard/PieGraph";
 import {BarGraph} from "../components/dashboard/BarGraph";
-import {RadialBar} from "../components/dashboard/RadialBar";
 import {Caution} from "../components/dashboard/Caution";
 
 export const DashBoard = () => {
@@ -13,11 +12,10 @@ export const DashBoard = () => {
 		<div id="page-wrapper">
 			<div className="row">
 				<div className="col-lg-12">
-					<h1 className="page-header">실시간 가스 요금</h1>
+					<h1 className="page-header">지역별 가스비</h1>
 				</div>
 			</div>
 			<div className="row">
-				<RadialBar />
 				<BarGraph />
 				<PieGraph />
 			</div>
