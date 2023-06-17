@@ -50,7 +50,7 @@ export const PostDetail = ({post, nickname, postId, likes, setLikes, date}) => {
 			{
 				post.author === nickname ? (
 					<div>
-						<button className="btn btn-success" style={{color: 'black'}} onClick={editPost}>수정하기</button>
+						<button className="btn btn-info" style={{color: 'black'}} onClick={editPost}>수정하기</button>
 						<button className="btn btn-danger" style={{color: 'black'}} onClick={deletePost}>삭제하기</button>
 					</div>
 
