@@ -29,7 +29,9 @@ export const MyProfile = ({name, createdDate, setName}) => {
 
 	return (
 		<div className="flex-container">
-			<img src="/images/profile.jpg" style={{borderRadius: '50%'}}/>
+			<div className="col-xs">
+				<img src="/images/profile.jpg" style={{borderRadius: '50%'}}/>
+			</div>
 			<div className="col-lg-12" style={{marginLeft: '20px'}}>
 				<div>
 					<h1>
