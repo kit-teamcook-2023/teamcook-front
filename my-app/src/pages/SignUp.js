@@ -15,6 +15,7 @@ export const SignUp = () => {
 	const [nickname, setNickname] = useState("");
 	const [address, setAddress] = useState("");
 	const [gasMeter, setGasMeter] = useState("");
+	const [isDuplicate, setIsDuplicate] = useState(false);
 
 	const handleSubmit = async () => {
 		try {
@@ -27,6 +28,11 @@ export const SignUp = () => {
 					Authorization: `Bearer ${location.state.token}`
 				}
 			})
+			if(res.status === 226) {
+				setIsDuplicate(true);
+				return;
+			}
+
 			window.localStorage.setItem('token', res.data.access_token);
 			setIsLogin(true);
 			navigate('/');
@@ -34,6 +40,12 @@ export const SignUp = () => {
 		catch (err) {
 			console.log('sign up err ', err);
 		}
+	}
+
+	const handleWrite = (event) => {
+		if(isDuplicate)
+			setIsDuplicate(false);
+		setNickname(event.target.value);
 	}
 
 	return (
@@ -44,8 +56,13 @@ export const SignUp = () => {
 				rows={1}
 				style={{resize: 'none', backgroundColor: '#F8F8F8'}}
 				className="form-control"
-				onChange={event => setNickname(event.target.value)}
+				onChange={handleWrite}
 			/>
+			<div>
+				{
+					isDuplicate && <p className="error">{nickname}은 중복된 이름입니다.</p>
+				}
+			</div>
 			<p style={{marginTop: '55px'}}>주소 설정</p>
 			<textarea
 				rows={3}

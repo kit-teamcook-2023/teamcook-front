@@ -3,31 +3,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
   faCaretDown,
-  faAngleRight,
   faBell,
   faComment,
   faScroll,
   faUser,
-  faGear,
   faSignOut,
   faSearch,
   faWonSign,
-  faChartColumn,
-  faTable,
-  faSignIn
+  faSignIn, faUserGroup, faBook, faThumbsUp, faBullhorn, faGasPump
 } from '@fortawesome/free-solid-svg-icons';
-// import { onLogout } from '../App.js';
 import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
 import jwt_decode from "jwt-decode";
+import {BsFillSunFill, BsFillMoonFill} from 'react-icons/bs';
+import testImage from './image/github.png'
+import {faCamera} from "@fortawesome/free-solid-svg-icons/faCamera";
 
-export const Nav = () => {
+export const Nav = ({toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
-
     const chats = localStorage.getItem("chat");
     const comments = localStorage.getItem("comment");
+    const isDarkMode = localStorage.getItem("mode");
+
+    useEffect(() => {
+
+    }, [chats, comments])
 
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -38,34 +40,55 @@ export const Nav = () => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <Link to='/' className="navbar-brand">자취생을 위한</Link>
+          {
+            !localStorage.getItem("mode") || localStorage.getItem("mode") === 'false' ? (
+            <Link to='/' className="navbar-brand" style={{padding: '0'}}><img src="/images/apple-light.png" alt="logo"/></Link> )
+                : (
+            <Link to='/' className="navbar-brand" style={{padding: '0'}}><img src="/images/apple-dark.png" alt="logo"/></Link> )
+          }
         </div>
         {/* <!-- /.navbar-header --> */}
 
         <ul className="nav navbar-top-links navbar-right">
+          <li>
+            <button type='button' className={`toggle ${isDarkMode === "true" ? 'toggle-on' : 'toggle-off'}`} onClick={toggleDarkMode}>
+              <div className="switch">
+                <span>{isDarkMode === "true" ? <BsFillMoonFill/> : <BsFillSunFill />}</span>
+              </div>
+            </button>
+          </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
               <FontAwesomeIcon icon={faEnvelope} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-messages">
               {
-                Object.entries(JSON.parse(chats)).map((chat) => {
-
+                chats !== null && localStorage.getItem('token') ? (
+                  Object.entries(JSON.parse(chats)).map((chat, idx) => {
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
-
+  
                   return (
                     <React.Fragment>
+                    <li key={idx}>
+                    <Link to={`/chatroom`} state={you}>
+                        <FontAwesomeIcon icon={faComment}/> {chat[0].length > 10 ? chat[0].slice(0, 10) + '...' : chat[0]} : 새로운 채팅
+                        <span className="pull-right text-muted small">{chat[1][1]}</span>
+                    </Link>
+                    </li>
+                    <div className="divider"></div>
+                    </React.Fragment>
+                  )})) : (
+                    <React.Fragment>
                       <li>
-                        <Link to={`/chatroom`} state={you}>
-                          <FontAwesomeIcon icon={faComment}/> 새로운 채팅
-                          <span className="pull-right text-muted small">{chat[1][1]}</span>
+                        <Link>
+                          <FontAwesomeIcon icon={faComment}/> 채팅 알림 없음
                         </Link>
                       </li>
                       <div className="divider"></div>
                     </React.Fragment>
-                  )})
+                )
               }
             </ul>
             {/* <!-- /.dropdown-messages --> */}
@@ -77,18 +100,28 @@ export const Nav = () => {
             </a>
             <ul className="dropdown-menu dropdown-alerts">
               {
+                comments !== null && localStorage.getItem('token') ? (
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
-                      <li>
+                      <li key={idx}>
                         <Link to={`/post/${key[0]}`}>
-                          <FontAwesomeIcon icon={faScroll}/> 새로운 댓글
+                          <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 5 ? key[1][0].slice(0, 5) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
                         </Link>
                       </li>
                       <div className="divider"></div>
                     </React.Fragment>
-                  )})
+                  )})) : (
+                      <React.Fragment>
+                        <li>
+                          <Link>
+                            <FontAwesomeIcon icon={faScroll}/> 댓글 알림 없음
+                          </Link>
+                        </li>
+                        <div className="divider"></div>
+                      </React.Fragment>
+                )
               }
             </ul>
             {/* <!-- /.dropdown-alerts --> */}
@@ -102,8 +135,7 @@ export const Nav = () => {
               {
                 isLogin ? (
                     <React.Fragment>
-                      <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a></li>
-                      <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
+                      <li><Link to="/profile"><FontAwesomeIcon icon={faUser} /> 내 프로필</Link></li>
                       <li className="divider"></li>
                       <Link to='/' onClick={logout}><FontAwesomeIcon icon={faSignOut} /> 로그아웃</Link>
                     </React.Fragment>
@@ -127,105 +159,30 @@ export const Nav = () => {
             <div className="navbar-default sidebar" role="navigation">
               <div className="sidebar-nav navbar-collapse">
                 <ul className="nav" id="side-menu">
-                  <li className="sidebar-search">
-                    <div className="input-group custom-search-form">
-                      <input type="text" className="form-control" placeholder="Search..." />
-                      <span className="input-group-btn">
-                    <button className="btn btn-default" type="button">
-                    <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                  </span>
-                    </div>
-                    {/* <!-- /input-group --> */}
+                  <li>
+                    <Link to='/dashboard'><FontAwesomeIcon icon={faGasPump} /> 지역별 가스비<br/><span>우리 지역은 가스비가 얼마지?</span></Link>
                   </li>
                   <li>
-                    <Link to='/dashboard'><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</Link>
+                    <Link to='/karrot'><FontAwesomeIcon icon={faBook} /> 중고 거래<br/><span>네고 되나요? ㅠㅠ</span></Link>
                   </li>
                   <li>
-                    <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
+                    <Link to='/group-buying'><FontAwesomeIcon icon={faUserGroup} /> 공동 구매<br/><span>이거 같이 살 사람~?</span></Link>
                   </li>
                   <li>
-                    <Link to='/karrot'><FontAwesomeIcon icon={faTable} /> 중고 거래</Link>
+                    <Link to='/product-review'><FontAwesomeIcon icon={faCamera} /> 물품 리뷰<br/><span>이 물건 괜찮더라구요!</span></Link>
                   </li>
                   <li>
-                    <Link to='/group-buying'><FontAwesomeIcon icon={faTable} /> 공동 구매</Link>
+                    <Link to='/government'><FontAwesomeIcon icon={faBullhorn} /> 정부 정책<br/><span>공문이요~ 공문~</span></Link>
                   </li>
                   <li>
-                    <Link to='/product-review'><FontAwesomeIcon icon={faTable} /> 물품 리뷰</Link>
-                  </li>
-                  <li>
-                    <Link to='/government'><FontAwesomeIcon icon={faTable} /> 정부 정책</Link>
-                  </li>
-                  <li>
-                    <Link to='/life-hack'><FontAwesomeIcon icon={faTable} /> 생활 꿀팁</Link>
-                  </li>
-                  <li>
-                    <a href="#!"><FontAwesomeIcon icon={faGear} /> 기타 드롭다운 메뉴 <span className="fa arrow"></span></a>
-                    <ul className="nav nav-second-level">
-                      <li>
-                        <a href="/panel-weels">Panels and Wells</a>
-                      </li>
-                      <li>
-                        <a href="/buttons">Buttons</a>
-                      </li>
-                      <li>
-                        <a href="/notifications">Notifications</a>
-                      </li>
-                      <li>
-                        <a href="/typography">Typography</a>
-                      </li>
-                      <li>
-                        <a href="/icons"> Icons</a>
-                      </li>
-                      <li>
-                        <a href="/grid">Grid</a>
-                      </li>
-                    </ul>
-                    {/* <!-- /.nav-second-level --> */}
-                  </li>
-                  <li>
-                    <a href="#!"><i className="fa fa-sitemap fa-fw"></i> 드롭다운 1<span className="fa arrow"></span></a>
-                    <ul className="nav nav-second-level">
-                      <li>
-                        <a href="#!">Secont Level Item</a>
-                      </li>
-                      <li>
-                        <a href="#!">Second Level Item</a>
-                      </li>
-                      <li>
-                        <a href="#!">드롭다운 2 <span className="fa arrow"></span></a>
-                        <ul className="nav nav-third-level">
-                          <li>
-                            <a href="#!">Third Level Item</a>
-                          </li>
-                          <li>
-                            <a href="#!">Third Level Item</a>
-                          </li>
-                          <li>
-                            <a href="#!">Third Level Item</a>
-                          </li>
-                          <li>
-                            <a href="#!">Third Level Item</a>
-                          </li>
-                        </ul>
-                        {/* <!-- /.nav-third-level --> */}
-                      </li>
-                    </ul>
-                    {/* <!-- /.nav-second-level --> */}
-                  </li>
-                  <li>
-                    <a href="#!"><i className="fa fa-files-o fa-fw"></i> Sample Pages<span className="fa arrow"></span></a>
-                    <ul className="nav nav-second-level">
-                      <li>
-                        <a href="/blank">Blank Page</a>
-                      </li>
-                      <li>
-                        <a href="/login">Login Page</a>
-                      </li>
-                    </ul>
-                    {/* <!-- /.nav-second-level --> */}
+                    <Link to='/life-hack'><FontAwesomeIcon icon={faThumbsUp} /> 생활 꿀팁<br/><span>이건 개꿀팁인데...</span></Link>
                   </li>
                 </ul>
+                <div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>
+                  <Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
+                    <img src={testImage} style={{margin: 'auto', display: 'block', marginTop: '25px', marginBottom: '25px', width: '150px'}} alt='광고자리'/>
+                  </Link>
+                </div>
               </div>
               {/* <!-- /.sidebar-collapse --> */}
             </div>

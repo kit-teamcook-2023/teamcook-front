@@ -1,3 +1,4 @@
+
 import React, {useMemo, useRef} from "react";
 import {useState} from "react";
 import axios from "axios";
@@ -6,8 +7,9 @@ import 'react-quill/dist/quill.snow.css';
 import aws from 'aws-sdk'
 import uuid from 'react-uuid'
 import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
-export const PostWrite = ({title, category}) => {
+export const PostEdit = ({postId, title, category, body, setBody}) => {
 
 	const navigate = useNavigate();
 
@@ -18,13 +20,11 @@ export const PostWrite = ({title, category}) => {
 
 	const quillRef = useRef();
 
-	const [body, setBody] = useState("");
-
 	const handleChange = (text) => {
 		setBody(text);
 	}
 
-	const handleWrite =  async () => {
+	const handleEdit =  async () => {
 		try {
 			if(title === "") {
 				alert("제목은 빈칸 X");
@@ -35,16 +35,18 @@ export const PostWrite = ({title, category}) => {
 				return;
 			}
 
-			const res = await axios.post(`http://34.215.66.235:8000/post`, {
+			const name = jwt_decode(localStorage.getItem('token')).nickname;
+			const res = await axios.put(`http://34.215.66.235:8000/post/${postId}`, {
+				"id": postId,
+				"nickname": name,
 				"title": title,
-				"content": body,
-				"board": category.category
+				"content": body
 			}, {
 				headers: {
 					"Authorization": `Bearer ${localStorage.getItem('token')}`
 				}
 			});
-			navigate(`/post/${res.data.id}`)
+			navigate(`/post/${postId}`)
 		}
 		catch (err) {
 			console.log('실패', err);
@@ -126,7 +128,7 @@ export const PostWrite = ({title, category}) => {
 					onChange={handleChange}
 				/>
 			</div>
-			<button className="btn btn-primary" onClick={handleWrite}>작성하기</button>
+			<button className="btn btn-primary" onClick={handleEdit}>수정하기</button>
 		</div>
 	)
 }

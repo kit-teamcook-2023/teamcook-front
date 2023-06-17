@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom'
+import {useLocation, useParams, Link} from 'react-router-dom'
 import axios from "axios";
 import {CommentList} from "../components/post/CommentList";
 import {CommentWrite} from "../components/post/CommentWrite";
@@ -7,8 +7,11 @@ import {PostDetail} from "../components/post/PostDetail";
 import {LikeButton} from "../components/post/LikeButton";
 import jwt_decode from 'jwt-decode'
 import {Context} from "../store/Context";
+import testImage from '../components/image/github-long.png'
 
 export const Post = () => {
+
+	const location = useLocation();
 
 	const { id } = useParams();
 	const { calculateDate } = useContext(Context);
@@ -34,7 +37,7 @@ export const Post = () => {
 					setNickname(payload.nickname)
 				}
 			})
-	}, [likes, post])
+	}, [likes, location])
 
 	return (
 		<div id="page-wrapper">
@@ -46,6 +49,11 @@ export const Post = () => {
 				setLikes={setLikes}
 				date={date}
 			/>
+			<div title='해당 광고로 이동합니다.' style={{backgroundColor: "white"}}>
+				<Link to='https://github.com/orgs/kit-teamcook-2023/repositories'>
+					<img src={testImage} style={{margin: 'auto', display: 'block', marginBottom: '30px', width: '250px'}} alt='광고자리'/>
+				</Link>
+			</div>
 			<CommentWrite
 				postId={id}
 				comments={comments}

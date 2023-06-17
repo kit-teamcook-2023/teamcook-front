@@ -12,12 +12,15 @@ export const Chat = ({messages, myname}) => {
 	}, [messages]);
 
 	return (
-		<div className="chat-background">
+		<div className="chat-background" style={{
+			overflow: 'auto',
+			height:  '80vh'
+		}} ref={containerRef}>
 			{messages.length > 0 ? (
-				messages.map((message) => (
-					<div key={message.id}>
+				messages.map((message, idx) => (
+					<div key={idx}>
 						<div className={message.sender === myname ? 'my-chat-message' : 'your-chat-message'}>
-							<h4>{message.message}</h4>
+							<h4 style={{ wordWrap: 'break-word' }}>{message.message}</h4>
 							<p className="time-stamp">{message.time.toLocaleString()}</p>
 						</div>
 					</div>
