@@ -93,15 +93,15 @@ Gpple은 가스비 측정 및 자취 정보를 통해 자취생 및 1인가구�
 
 * .env
 ```sh
-    REACT_APP_REST_API_KEY="your kakao login api"
+REACT_APP_REST_API_KEY="your kakao login api"
 
-    REACT_APP_S3_ACCESS_KEY_ID="your s3 key id"
-    REACT_APP_S3_ACCESS_KEY_SECRET="your s3 secret key"
-    REACT_APP_S3_REGION="your region"
-    REACT_APP_S3_BUCKET="your bucket"
+REACT_APP_S3_ACCESS_KEY_ID="your s3 key id"
+REACT_APP_S3_ACCESS_KEY_SECRET="your s3 secret key"
+REACT_APP_S3_REGION="your region"
+REACT_APP_S3_BUCKET="your bucket"
 
-    REACT_APP_LOCAL="http://localhost:3000"
-    REACT_APP_RELEASE=http:"your release server url"
+REACT_APP_LOCAL="http://localhost:3000"
+REACT_APP_RELEASE=http:"your release server url"
 ```
 
 ### 설치
@@ -109,27 +109,31 @@ Gpple은 가스비 측정 및 자취 정보를 통해 자취생 및 1인가구�
 1. Clone this repository   
 
 
-   ```sh
-   git clone https://github.com/kit-teamcook-2023/teamcook-front.git
-   ```
+```sh
+git clone https://github.com/kit-teamcook-2023/teamcook-front.git
+```
+
+
 2. Install NPM packages   
 
 
-   ```sh
-   npm install
-   ```
+```sh
+npm install
+```
+
+
 3. Write your API in `.env`
     
 ```sh
-    REACT_APP_REST_API_KEY="your kakao login api"
+REACT_APP_REST_API_KEY="your kakao login api"
 
-    REACT_APP_S3_ACCESS_KEY_ID="your s3 key id"
-    REACT_APP_S3_ACCESS_KEY_SECRET="your s3 secret key"
-    REACT_APP_S3_REGION="your region"
-    REACT_APP_S3_BUCKET="your bucket"
+REACT_APP_S3_ACCESS_KEY_ID="your s3 key id"
+REACT_APP_S3_ACCESS_KEY_SECRET="your s3 secret key"
+REACT_APP_S3_REGION="your region"
+REACT_APP_S3_BUCKET="your bucket"
 
-    REACT_APP_LOCAL="http://localhost:3000"
-    REACT_APP_RELEASE=http:"your release server url"
+REACT_APP_LOCAL="http://localhost:3000"
+REACT_APP_RELEASE=http:"your release server url"
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -160,6 +164,10 @@ Gpple은 가스비 측정 및 자취 정보를 통해 자취생 및 1인가구�
     - [ ] Chinese
     - [ ] Spanish
 
+
+<br>
+<br>
+
 [open issues](https://github.com/kit-teamcook-2023/teamcook-front/issues)에서 모든 이슈 및 특이사항을 볼 수 있습니다.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -185,7 +193,7 @@ Gpple은 가스비 측정 및 자취 정보를 통해 자취생 및 1인가구�
 
 
 <!-- LICENSE -->
-## License
+## 라이센스
 
 MIT License로 배포 되었습니다. `LICENSE.txt`에 더 많은 내용이 있습니다.
 
