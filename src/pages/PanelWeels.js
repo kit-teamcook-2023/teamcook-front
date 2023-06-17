@@ -158,7 +158,7 @@ class PanelWeels extends Component {
                   <div className="panel panel-default">
                     <div className="panel-heading">
                       <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="src/pages/PanelWeels#collapseOne">Collapsible Group Item #1</a>
                       </h4>
                     </div>
                     <div id="collapseOne" className="panel-collapse collapse in">
@@ -170,7 +170,7 @@ class PanelWeels extends Component {
                   <div className="panel panel-default">
                     <div className="panel-heading">
                       <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="src/pages/PanelWeels#collapseTwo">Collapsible Group Item #2</a>
                       </h4>
                     </div>
                     <div id="collapseTwo" className="panel-collapse collapse">
@@ -182,7 +182,7 @@ class PanelWeels extends Component {
                   <div className="panel panel-default">
                     <div className="panel-heading">
                       <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="src/pages/PanelWeels#collapseThree">Collapsible Group Item #3</a>
                       </h4>
                     </div>
                     <div id="collapseThree" className="panel-collapse collapse">
@@ -210,13 +210,13 @@ class PanelWeels extends Component {
               <div className="panel-body">
                 {/* <!-- Nav tabs --> */}
                 <ul className="nav nav-tabs">
-                  <li className="active"><a href="#home" data-toggle="tab">Home</a>
+                  <li className="active"><a href="src/pages/PanelWeels#home" data-toggle="tab">Home</a>
                   </li>
-                  <li><a href="#profile" data-toggle="tab">Profile</a>
+                  <li><a href="src/pages/PanelWeels#profile" data-toggle="tab">Profile</a>
                   </li>
-                  <li><a href="#messages" data-toggle="tab">Messages</a>
+                  <li><a href="src/pages/PanelWeels#messages" data-toggle="tab">Messages</a>
                   </li>
-                  <li><a href="#settings" data-toggle="tab">Settings</a>
+                  <li><a href="src/pages/PanelWeels#settings" data-toggle="tab">Settings</a>
                   </li>
                 </ul>
 
@@ -254,13 +254,13 @@ class PanelWeels extends Component {
               <div className="panel-body">
                 {/* <!-- Nav tabs --> */}
                 <ul className="nav nav-pills">
-                  <li className="active"><a href="#home-pills" data-toggle="tab">Home</a>
+                  <li className="active"><a href="src/pages/PanelWeels#home-pills" data-toggle="tab">Home</a>
                   </li>
-                  <li><a href="#profile-pills" data-toggle="tab">Profile</a>
+                  <li><a href="src/pages/PanelWeels#profile-pills" data-toggle="tab">Profile</a>
                   </li>
-                  <li><a href="#messages-pills" data-toggle="tab">Messages</a>
+                  <li><a href="src/pages/PanelWeels#messages-pills" data-toggle="tab">Messages</a>
                   </li>
-                  <li><a href="#settings-pills" data-toggle="tab">Settings</a>
+                  <li><a href="src/pages/PanelWeels#settings-pills" data-toggle="tab">Settings</a>
                   </li>
                 </ul>
 

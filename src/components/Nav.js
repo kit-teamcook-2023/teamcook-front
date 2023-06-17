@@ -58,7 +58,7 @@ export const Nav = ({toggleDarkMode}) => {
             </button>
           </li>
           <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
+            <a className="dropdown-toggle" data-toggle="dropdown" href="src/components/Nav#!">
               <FontAwesomeIcon icon={faEnvelope} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-messages">
@@ -95,7 +95,7 @@ export const Nav = ({toggleDarkMode}) => {
           </li>
           {/* <!-- /.dropdown --> */}
           <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
+            <a className="dropdown-toggle" data-toggle="dropdown" href="src/components/Nav#!">
               <FontAwesomeIcon icon={faBell} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-alerts">
@@ -128,7 +128,7 @@ export const Nav = ({toggleDarkMode}) => {
           </li>
           {/* <!-- /.dropdown --> */}
           <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
+            <a className="dropdown-toggle" data-toggle="dropdown" href="src/components/Nav#!">
             <FontAwesomeIcon icon={faUser} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-user">
