@@ -2,10 +2,9 @@ import React, {useState, useEffect, useRef} from "react";
 import axios from "axios";
 import './css/Profile.css'
 
-export const EditName = ({name, setName, setIsEdit, setShowButton}) => {
+export const EditName = ({name, setName, setIsEdit}) => {
 
 	const exitEditBox = () => {
-		setShowButton(false);
 		setIsEdit(false);
 		setIsDuplicate(false);
 	}

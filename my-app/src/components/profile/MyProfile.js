@@ -12,7 +12,6 @@ export const MyProfile = ({name, createdDate, setName}) => {
 		marginLeft: '10px',
 	}
 
-	const [showButton, setShowButton] = useState(false);
 	const [isEdit, setIsEdit] = useState(false);
 
 	const showEditBox = () => {
@@ -40,16 +39,13 @@ export const MyProfile = ({name, createdDate, setName}) => {
 									name={name}
 									setName={setName}
 									setIsEdit={setIsEdit}
-									setShowButton={setShowButton}
 								/>
 							) : (
 								<React.Fragment>
 									<span><strong>{name}</strong>님</span>
 									<button
-										onMouseEnter={() => setShowButton(true)}
-										onMouseLeave={() => setShowButton(false)}
 										onClick={showEditBox}
-										type="button" className={`btn button-danger btn-circle btn-sm ${showButton ? "" : "hide-button"}`} style={options}><FontAwesomeIcon icon={faPencil} /></button>
+										type="button" className={`btn button-danger btn-circle btn-sm`} style={options}><FontAwesomeIcon icon={faPencil} /></button>
 								</React.Fragment>
 							)
 						}
