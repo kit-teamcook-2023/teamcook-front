@@ -30,7 +30,8 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 import {Profile} from "./pages/Profile";
 import {Home} from './pages/Home'
-import {DashBoard} from "./pages/Dashboard";
+import {DashBoard} from "./pages/DashBoard";
+import {Edit} from "./pages/Edit";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -191,6 +192,7 @@ function App() {
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
+                <Route path='/edit/:id' element={<PrivateRoute component={<Edit />}/>} />
                 <Route path='/profile' element={<PrivateRoute component={<Profile />} />} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>
