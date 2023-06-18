@@ -17,7 +17,7 @@
   <p align="center">
     Gpple 백엔드 코드 보러가기
     <br />
-    <a href="https://github.com/kit-teamcook-2023/teamcook-front"><strong>Explore the backend »</strong></a>
+    <a href="https://github.com/kit-teamcook-2023/teamcook-backend"><strong>Explore the backend »</strong></a>
     <br />
     <br />
     <a href="http://15.165.65.93">View Demo</a>
@@ -43,6 +43,7 @@
     <li>
       <a href="#시작하기">시작하기</a>
       <ul>
+        <li><a href="#시스템-요구사항">시스템 요구사항</a></li>
         <li><a href="#설치">설치</a></li>
       </ul>
     </li>
@@ -91,18 +92,10 @@ Gpple은 가스비 측정 및 자취 정보를 통해 자취생 및 1인가구�
 <!-- GETTING STARTED -->
 ## 시작하기
 
-* .env
-```sh
-REACT_APP_REST_API_KEY="your kakao login api"
-
-REACT_APP_S3_ACCESS_KEY_ID="your s3 key id"
-REACT_APP_S3_ACCESS_KEY_SECRET="your s3 secret key"
-REACT_APP_S3_REGION="your region"
-REACT_APP_S3_BUCKET="your bucket"
-
-REACT_APP_LOCAL="http://localhost:3000"
-REACT_APP_RELEASE=http:"your release server url"
-```
+### 시스템 요구사항
+* Node 18.1.0
+* Npm 8.8.0   
+<br>
 
 ### 설치
 
@@ -136,6 +129,11 @@ REACT_APP_LOCAL="http://localhost:3000"
 REACT_APP_RELEASE=http:"your release server url"
 ```
 
+4. Start this App
+```shell
+npm start
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -154,8 +152,10 @@ REACT_APP_RELEASE=http:"your release server url"
 - [x] 커뮤니티 기능
 - [x] 댓글 기능
 - [x] 채팅 기능
+- [x] 외부 광고 삽입
 - [x] 글 수정/삭제 기능
 - [x] 글 이미지 첨부 기능
+- [x] 다크모드
 - [x] 마이페이지
     - [x] 내가 쓴 글 / 댓글 목록
     - [ ] 프로필 이미지 변경
@@ -177,9 +177,9 @@ REACT_APP_RELEASE=http:"your release server url"
 <!-- CONTRIBUTING -->
 ## 오픈소스 기여
 
-오픈소스 기여는 오픈 소스 커뮤니티를 배우고, 영감을 주고, 창조하는 놀라운 장소로 만드는 것입니다. 당신의 기여는 **대단히 감사합니다**.
+오픈소스 기여는 오픈 소스 커뮤니티를 배우고, 영감을 주고, 창조하는 놀라운 장소로 만드는 것입니다. 당신의 기여에 **대단히 감사드립니다**.
 
-이를 개선할 수 있는 제안이 있으면 **repository**를 **fork**하여 **pull request**를 생성해주세요. **enhancement** 태그를 사용하여 **issue**를 열 수도 있습니다.
+이 프로젝트를 개선할 수 있는 제안이 있으면 **repository**를 **fork**하여 **pull request**를 생성해주세요. **enhancement** 태그를 사용하여 **issue**를 열 수도 있습니다.
 프로젝트에 **star**를 달아주는 것을 잊지 마세요! **다시 한번 감사드립니다!**
 
 1. 프로젝트 fork 하기
@@ -217,21 +217,8 @@ MIT License로 배포 되었습니다. `LICENSE.txt`에 더 많은 내용이 있
 [stars-url]: https://github.com/kit-teamcook-2023/teamcook-front/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
