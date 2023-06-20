@@ -1,4 +1,4 @@
-import React, {useMemo, useRef} from "react";
+import React, {useMemo, useRef, useEffect} from "react";
 import {useState} from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
@@ -23,6 +23,29 @@ export const PostWrite = ({title, category}) => {
 	const handleChange = (text) => {
 		setBody(text);
 	}
+
+	useEffect(() => {
+	  if (quillRef != null && quillRef.current != null) {
+		let quill = quillRef.current.getEditor();
+		
+		quill.clipboard.addMatcher(Node.TEXT_NODE, function(node, delta) {
+		  const regex = /\b(https?:\/\/[^\s]+)\b/gi;
+		  if(typeof node.data === 'string') {
+			const matches = Array.from(node.data.matchAll(regex));
+  
+			matches.forEach(match => {
+			  const url = match[0];
+			  const pos = match.index;
+			  delta.ops[pos].insert = node.data.slice(0, pos);
+			  delta.ops.push({insert: url, attributes: {link: url}});
+			  delta.ops.push({insert: node.data.slice(pos + url.length)});
+			});
+		  }
+		  
+		  return delta;
+		});
+	  }
+	}, []);
 
 	const handleWrite =  async () => {
 		try {
